@@ -1,0 +1,62 @@
+
+vector <int> ans;
+
+bool mark[1000001];
+int NOD[1000001];
+bool visit[1000001];
+vector <int> ara;
+bool p = 0;
+vector <long long> prime;
+int NOOD(long long n)
+{
+    if(NOD[n] != 0){
+        return NOD[n];
+    }
+    long long m = n;
+
+    long long srt;
+    int nod = 1;
+    //cout<<n<<endl;
+    for(int i = 0; i < prime.size(); i++){
+        if(n == 0){break;}
+        srt = sqrt(n) + 1;
+        if(prime[i] > srt || n == 0){break;}
+        if(n % prime[i] == 0){
+            visit[prime[i]] = 1;
+            //cout<<prime[i]<<' ';
+            int a = 0;
+            while (n%prime[i] == 0 && n != 0){
+                n /= prime[i];
+                a++;
+            }
+            nod = nod*(a+1);
+        }
+    }
+    if (n > 2){
+        nod = nod*2;
+    }
+    NOD[m] = nod;
+    return nod;
+}
+
+void primeFactorsation()
+{
+    long long i;
+    long long srt = 1000000;
+    for(i = 2; i <= srt; i += 2){
+        mark[i] = 1;
+    }
+
+    prime.push_back(2);
+    for(i = 3; i <= srt; i += 2){
+        if(!mark[i]){
+            prime.push_back(i);
+            //cout<<i<<endl;
+            if(i <= srt){
+                for(long long j = i*i; j <= srt; j += 2*i){
+                    mark[j] = 1;
+                }
+            }
+        }
+    }
+}

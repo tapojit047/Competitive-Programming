@@ -1,0 +1,12 @@
+Let LCM & GCD of x & y be L & G;
+So,
+x = G*a;
+y = G*b;
+
+x*y = G*L
+G*a * G*b = G*L;
+L = G*a*b;
+a*b = (L/G)
+
+Now find two co primes the product of those is a*b. That means (a, b)
+So the numbers are G*a & G*b 
